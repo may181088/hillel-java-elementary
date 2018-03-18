@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hillel Java Elementary</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <style>
+      body {
+          font-family: "Open sans", sans-serif;
+          margin: 0;
+      }
+
+      h1 {
+        border-bottom: 3px solid #dadada;
+        text-align: center;
+        width: 99%;
+        padding: 5px;
+        background-color: #eee;
+      }
+
+      ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0; 
+          width: 25%;
+          background-color: #f1f1f1;
+          position: fixed;
+          height: 90%;
+          overflow: auto;
+      }
+
+      li a {
+          display: block;
+          color: #000;
+          padding: 8px 10px;
+          text-decoration: none;
+      }
+
+      li a.active {
+          background-color: #4CAF50!important;
+          color: white!important;
+          font-weight: bold;
+      }
+
+      li a.passed {
+          background-color: #331C30;
+          color: grey;
+      }
+
+      li a.next {
+          background-color: #7CAF80;
+          color: black;
+          padding-left: 30px;
+      }
+
+      li a:hover:not(.active) {
+          background-color: #555;
+          color: white;
+      }
+
+      .header {
+          height: 5%;
+          background-color: #9CCFA0;
+          padding-top: 1px;
+          padding-left: 20px;
+      }
+
+      .tabcontent {
+          right: 20px;
+          left: 20px;
+          display: none;
+          font-family: "Comic Sans MS", sans-serif;
+          position: fixed;
+          height: 90%;
+          overflow: auto;
+          margin-left: 25%;
+          width: 100%
+          padding: 10px; 
+          overflow: auto;
+      }
+      table, th, td {
+          border: 3px solid #dadada;
+          border-collapse: collapse;
+          background-color: #f5f5f5;
+          text-align: center;    
+      }
+      .linkstyle {
+        color: rgb(2, 69, 176); 
+        text-decoration: none;
+      }
+
+      .tooltip .tooltiptext {
+          visibility: hidden;
+          width: 220px;
+          background-color: #9CCFA0;
+          color: black;
+          text-align: center;
+          border-radius: 6px;
+          padding: 5px 0;
+          position: absolute;
+          z-index: 1;
+      }
+
+      .tooltip:hover .tooltiptext {
+          visibility: visible;
+      }
+    </style>
+    </head>
+  <body>
+    <div class="header">
+      <h2>
+        <img style="text-align: left;" height="25px" src="https://ithillel.ua/resources/images/global/logo_big@2x.png">
+        <b style="padding-left: 25px; text-align: center;">Java Elementary Lessons</b>
+      </h2>
+    </div>
+    <ul>
+      <li><a onclick="openLesson(event, 'general_info')" style="color: #3f4" class="tablinks passed" href="#general_info">&oplus; General Information</a></li>
+      <li><a onclick="openLesson(event, 'command_line')" style="color: green" class="tablinks passed" href="#command_line">&oplus; Command Line HELP</a></li>
+      <li><a onclick="openLesson(event, 'useful_resources')" style="color: green" class="tablinks passed" href="#useful_resources">&oplus; Useful Resources</a></li>
+      <li><a onclick="openLesson(event, 'books')" style="color: green" class="tablinks passed" href="#books">&oplus; Books you must read</a></li>
+      <li><a onclick="openLesson(event, 'lesson_1')" class="tablinks passed" href="#lesson_1"><b style="color: green">&radic;</b> Lesson 1</a></li>
+      <li><a onclick="openLesson(event, 'lesson_2')" class="tablinks passed" href="#lesson_2"><b style="color: green">&radic;</b> Lesson 2</a></li>
+      <li><a onclick="openLesson(event, 'lesson_3')" class="tablinks passed" href="#lesson_3"><b style="color: green">&radic;</b> Lesson 3</a></li>
+      <li><a onclick="openLesson(event, 'lesson_4')" class="tablinks passed" href="#lesson_4"><b style="color: green">&radic;</b> Lesson 4</a></li>
+      <li><a onclick="openLesson(event, 'lesson_5')" class="tablinks passed" href="#lesson_5"><b style="color: green">&radic;</b> Lesson 5</a></li>
+      <li><a onclick="openLesson(event, 'lesson_6')" class="tablinks passed" href="#lesson_6"><b style="color: green">&radic;</b> Lesson 6</a></li>
+      <li><a onclick="openLesson(event, 'lesson_7')" class="tablinks passed" href="#lesson_7"><b style="color: green">&radic;</b> Lesson 7</a></li>
+      <li><a onclick="openLesson(event, 'lesson_8')" class="tablinks passed" href="#lesson_8"><b style="color: green">&radic;</b> Lesson 8</a></li>
+      <li><a onclick="openLesson(event, 'lesson_9')" class="next tablinks" href="#lesson_9"><b style="color: green">&rArr;</b> Lesson 9</a></li>
+      <div class="tooltip">
+        <img name="James Gosling" style="left: 200px;margin-top: -170px; z-index: 9999;position: absolute;" height="150px" src="http://nighthacks.com/jag/res/SouthParkJAG-small.png">
+        <span style="left: 130px;margin-top: -220px; z-index: 99999;position: absolute;" class="tooltiptext">Hi, I'm James Gosling. Welcome to Java world! <br/>Let's program! </span>
+      </div>
+      <li><a onclick="openLesson(event, 'lesson_10')" class="tablinks" href="#lesson_10">Lesson 10</a></li>
+      <li><a onclick="openLesson(event, 'lesson_11')" class="tablinks" href="#lesson_11">Lesson 11</a></li>
+      <li><a onclick="openLesson(event, 'lesson_12')" class="tablinks" href="#lesson_12">Lesson 12</a></li>
+      <li><a onclick="openLesson(event, 'lesson_13')" class="tablinks" href="#lesson_13">Lesson 13</a></li>
+      <li><a onclick="openLesson(event, 'lesson_14')" class="tablinks" href="#lesson_14">Lesson 14</a></li>
+      <li><a onclick="openLesson(event, 'lesson_15')" class="tablinks" href="#lesson_15">Lesson 15</a></li>
+      <li><a onclick="openLesson(event, 'lesson_16')" class="tablinks" href="#lesson_16">Lesson 16</a></li>
+      <li><a onclick="openLesson(event, 'lesson_17')" class="tablinks" href="#lesson_17">Lesson 17</a></li>
+      <li><a onclick="openLesson(event, 'lesson_18')" class="tablinks" href="#lesson_18">Lesson 18</a></li>
+      <li><a onclick="openLesson(event, 'lesson_19')" class="tablinks" href="#lesson_19">Lesson 19</a></li>
+      <li><a onclick="openLesson(event, 'lesson_20')" class="tablinks" href="#lesson_20">Lesson 20</a></li>
+      <li><a onclick="openLesson(event, 'lesson_21')" class="tablinks" href="#lesson_21">Lesson 21</a></li>
+      <li><a onclick="openLesson(event, 'lesson_22')" class="tablinks" href="#lesson_22">Lesson 22</a></li>
+      <li><a onclick="openLesson(event, 'lesson_23')" class="tablinks" href="#lesson_23">Lesson 23</a></li>
+      <li><a onclick="openLesson(event, 'lesson_24')" class="tablinks" href="#lesson_24">Lesson 24</a></li>
+      <li><a onclick="openLesson(event, 'lesson_25')" class="tablinks" href="#lesson_25">Lesson 25</a></li>
+      <li><a onclick="openLesson(event, 'lesson_26')" class="tablinks" href="#lesson_26">Lesson 26</a></li>
+      <li><a onclick="openLesson(event, 'lesson_27')" class="tablinks" href="#lesson_27">Lesson 27</a></li>
+      <li><a onclick="openLesson(event, 'lesson_28')" class="tablinks" href="#lesson_28">Lesson 28</a></li>
+      <li><a onclick="openLesson(event, 'lesson_29')" class="tablinks" href="#lesson_29">Lesson 29</a></li>
+      <li><a onclick="openLesson(event, 'lesson_30')" class="tablinks" href="#lesson_30">Lesson 30</a></li>
+      <li><a onclick="openLesson(event, 'lesson_31')" class="tablinks" href="#lesson_31">Lesson 31</a></li>
+      <li><a onclick="openLesson(event, 'lesson_32')" class="tablinks" href="#lesson_32">Lesson 32</a></li>
+    </ul>
+
+
+    <div id="general_info" class="tabcontent">
+      <h1>Dramatis Personae :)</h1>
+      <table style="width:100%">
+        <tr>
+          <td><a class="linkstyle" href="https://hilleljava.slack.com/messages/D9A6PDDT9">Nick Pudov<br/>(ant1xr1s)</a></td>
+          <td><a class="linkstyle" href="https://hilleljava.slack.com/messages/D999J47PX">Vlad Kodzhebash<br/>(Jamesson13)</a></td>
+          <td><a class="linkstyle" href="https://hilleljava.slack.com/messages/D9952EKQS">Andrey Knyazhev<br/>(KnyazhevAndrew)</a></td>
+          <td><a class="linkstyle" href="https://hilleljava.slack.com/messages/D9A6PVD71">Alexander Markovskiy<br/>(may181088)</a></td>
+          <td style="border-style: none">|||||||</td>
+          <td style="border-style: none">|||||||</td>
+          <td style="border-style: none"></td>      
+        </tr>
+        <tr>
+          <td><a class="linkstyle" href="https://hilleljava.slack.com/messages/D9A6Q8CF9">Evheniy Hritsaenko<br/>(EvheniyHricaenko)</a></td>
+          <td><a class="linkstyle" href="https://hilleljava.slack.com/messages/D992A53S7">Egor Fomin<br/>(EgorFomin)</a></td>
+          <td><a class="linkstyle" href="https://hilleljava.slack.com/messages/D995ZGPGC">Vasil Deno<br/>(DenovVasil)</a></td>
+          <td style="border-style: none">|||||||</td>
+          <td style="border-style: none">|||||||</td>
+          <td><a class="linkstyle" href="https://hilleljava.slack.com/messages/D98J9L73K">Andriy Bodnaruk<br/>(AndriyBod)</a></td>
+          <td><a class="linkstyle" href="https://hilleljava.slack.com/messages/D994G8MRS">Kostya<br/>(OvcharenkoAppDev)</a></td>
+        </tr>
+        <tr>
+          <td><a class="linkstyle" href="https://hilleljava.slack.com/messages/D9961NKEE">Ruslana<br/>(ruslana1319)</a></td>
+          <td><a class="linkstyle" href="https://hilleljava.slack.com/messages/D98JMEB9P">Dima Denysko<br/>(rickdemonn)</a></td>
+          <td><a class="linkstyle" href="https://hilleljava.slack.com/messages/D98J9PPJM">Alex Korotkov<br/>(Alexus881)</a></td>
+          <td style="border-style: none">|||||||</td>
+          <td style="border-style: none">|||||||</td>
+          <td><a class="linkstyle" href="https://hilleljava.slack.com/messages/D99ULU87L">Ivan Lupolov<br/>(lupolov-ivan)</a></td>
+          <td><a class="linkstyle" href="https://hilleljava.slack.com/messages/D9952DNPL">Slava Yevtodii<br/>(slavajava)</a></td>
+        </tr>
+        <tr>
+          <td><a class="linkstyle" href="https://hilleljava.slack.com/messages/D98SY4FC4">Ruslan Gramatic<br/>(rubfan)</a></td>
+        </tr>
+      </table>
+
+      <h1>Our Slack link</h1>
+      <div>Our Slack chanel: <a class="linkstyle" href="https://hilleljava.slack.com/open">https://hilleljava.slack.com/open</a></div>
+      <div>Our Slack invite link: <a class="linkstyle" href="https://goo.gl/eY6sWW">https://goo.gl/eY6sWW</a></div>
+      
+      <h1>Our GitHub</h1>
+      
+      <div>
+          <img height="16" src="https://avatars1.githubusercontent.com/u/6973489?s=32&amp;v=4" width="16">
+        <a href="https://github.com/rubfan">Ruslan Gramatic: rubfan (Initial Branch)</a> / <a href="https://github.com/rubfan/hillel-java-elementary">https://github.com/rubfan/hillel-java-elementary</a>
+      </div>
+      <div>
+          <img src="https://assets-cdn.github.com/images/modules/network/t.png">
+          <img class="gravatar" height="16" src="https://avatars1.githubusercontent.com/u/17157347?s=32&amp;v=4" width="16">
+        <a href="https://github.com/Alexus881">Alexus881</a> / <a href="https://github.com/Alexus881/hillel-java-elementary">https://github.com/Alexus881/hillel-java-elementary</a>
+      </div>
+      <div>
+          <img src="https://assets-cdn.github.com/images/modules/network/t.png">
+          <img height="16" src="https://avatars2.githubusercontent.com/u/36486681?s=32&amp;v=4" width="16">
+        <a href="https://github.com/AndriyBod">AndriyBod</a> / <a href="https://github.com/AndriyBod/hillel-java-elementary">https://github.com/AndriyBod/hillel-java-elementary</a>
+      </div>
+      <div>
+          <img src="https://assets-cdn.github.com/images/modules/network/t.png">
+          <img height="16" src="https://avatars0.githubusercontent.com/u/36488963?s=32&amp;v=4" width="16">
+        <a href="https://github.com/ant1xr1s">ant1xr1s</a> / <a href="https://github.com/ant1xr1s/hillel-java-elementary">https://github.com/ant1xr1s/hillel-java-elementary</a>
+      </div>
+      <div>
+          <img src="https://assets-cdn.github.com/images/modules/network/t.png">
+          <img height="16" src="https://avatars3.githubusercontent.com/u/30140002?s=32&amp;v=4" width="16">
+        <a href="https://github.com/DenovVasil">DenovVasil</a> / <a href="https://github.com/DenovVasil/hillel-java-elementary">https://github.com/DenovVasil/hillel-java-elementary</a>
+      </div>
+      <div>
+          <img src="https://assets-cdn.github.com/images/modules/network/t.png">
+          <img height="16" src="https://avatars0.githubusercontent.com/u/26679359?s=32&amp;v=4" width="16">
+        <a href="https://github.com/EgorFomin">EgorFomin</a> / <a href="https://github.com/EgorFomin/hillel-java-elementary">https://github.com/EgorFomin/hillel-java-elementary</a>
+      </div>
+      <div>
+          <img src="https://assets-cdn.github.com/images/modules/network/t.png">
+          <img height="16" src="https://avatars3.githubusercontent.com/u/23076984?s=32&amp;v=4" width="16">
+        <a href="https://github.com/EvheniyHricaenko">EvheniyHricaenko</a> / <a href="https://github.com/EvheniyHricaenko/hillel-java-elementary">https://github.com/EvheniyHricaenko/hillel-java-elementary</a>
+      </div>
+      <div>
+          <img src="https://assets-cdn.github.com/images/modules/network/t.png">
+          <img height="16" src="https://avatars2.githubusercontent.com/u/36486948?s=32&amp;v=4" width="16">
+        <a href="https://github.com/Jamesson13">Jamesson13</a> / <a href="https://github.com/Jamesson13/hillel-java-elementary">https://github.com/Jamesson13/hillel-java-elementary</a>
+      </div>
+      <div>
+          <img src="https://assets-cdn.github.com/images/modules/network/t.png">
+          <img height="16" src="https://avatars2.githubusercontent.com/u/36486657?s=32&amp;v=4" width="16">
+        <a href="https://github.com/KnyazhevAndrew">KnyazhevAndrew</a> / <a href="https://github.com/KnyazhevAndrew/hillel-java-elementary">https://github.com/KnyazhevAndrew/hillel-java-elementary</a>
+      </div>
+      <div>
+          <img src="https://assets-cdn.github.com/images/modules/network/t.png">
+          <img height="16" src="https://avatars0.githubusercontent.com/u/20370339?s=32&amp;v=4" width="16">
+        <a href="https://github.com/lupolov-ivan">lupolov-ivan</a> / <a href="https://github.com/lupolov-ivan/hillel-java-elementary">https://github.com/lupolov-ivan/hillel-java-elementary</a>
+      </div>
+      <div>
+          <img src="https://assets-cdn.github.com/images/modules/network/t.png">
+          <img height="16" src="https://avatars1.githubusercontent.com/u/29281192?s=32&amp;v=4" width="16">
+        <a href="https://github.com/may181088">may181088</a> / <a href="https://github.com/may181088/hillel-java-elementary">https://github.com/may181088/hillel-java-elementary</a>
+      </div>
+      <div>
+          <img src="https://assets-cdn.github.com/images/modules/network/t.png">
+          <img height="16" src="https://avatars1.githubusercontent.com/u/26527346?s=32&amp;v=4" width="16">
+        <a href="https://github.com/OvcharenkoAppDev">OvcharenkoAppDev</a> / <a href="https://github.com/OvcharenkoAppDev/hillel-java-elementary">https://github.com/OvcharenkoAppDev/hillel-java-elementary</a>
+      </div>
+      <div>
+          <img src="https://assets-cdn.github.com/images/modules/network/t.png">
+          <img height="16" src="https://avatars0.githubusercontent.com/u/36486204?s=32&amp;v=4" width="16">
+        <a href="https://github.com/rickdemonn">rickdemonn</a> / <a href="https://github.com/rickdemonn/hillel-java-elementary">https://github.com/rickdemonn/hillel-java-elementary</a>
+      </div>
+      <div>
+          <img src="https://assets-cdn.github.com/images/modules/network/t.png">
+          <img height="16" src="https://avatars2.githubusercontent.com/u/36489514?s=32&amp;v=4" width="16">
+        <a href="https://github.com/ruslana1319">ruslana1319</a> / <a href="https://github.com/ruslana1319/hillel-java-elementary">https://github.com/ruslana1319/hillel-java-elementary</a>
+      </div>
+      <div>
+          <img src="https://assets-cdn.github.com/images/modules/network/l.png">
+          <img height="16" src="https://avatars3.githubusercontent.com/u/36486761?s=32&amp;v=4" width="16">
+        <a href="https://github.com/slavajava">slavajava</a> / <a href="https://github.com/slavajava/hillel-java-elementary">https://github.com/slavajava/hillel-java-elementary</a>
+      </div>
+      <br/>
+    </div>
+
+    <div id="useful_resources" class="tabcontent">
+      <h1> English Useful Resources </h1>
+      <p>URL:&nbsp;<a href="http://docs.oracle.com/javase/" class="linkstyle">http://docs.oracle.com/javase/</a></p>
+      <p>URL:&nbsp;<a href="https://github.com/" class="linkstyle">https://github.com/</a></p>
+      <p>URL:&nbsp;<a href="http://stackoverflow.com/" class="linkstyle">http://stackoverflow.com/</a></p>
+      <p>URL:&nbsp;<a href="http://www.dzone.com/links/index.html" class="linkstyle">http://www.dzone.com</a></p>
+      <p>URL:&nbsp;<a href="http://leetcode.com/" class="linkstyle">http://leetcode.com/</a></p>
+      <p>URL:&nbsp;<a href="http://www.programcreek.com/" class="linkstyle">http://www.programcreek.com/</a></p>
+      <p>URL:&nbsp;<a href="http://www.javaworld.com/" class="linkstyle">http://www.javaworld.com/</a></p>
+      <p>URL:&nbsp;<a href="http://www.ibm.com/developerworks/java/" class="linkstyle">http://www.ibm.com/developerworks/java/</a></p>
+      <p>URL:&nbsp;<a href="https://www.javacodegeeks.com/" class="linkstyle">https://www.javacodegeeks.com/</a></p>
+      <p>URL:&nbsp;<a href="https://www.tutorialspoint.com" class="linkstyle">https://www.tutorialspoint.com</a></p>
+      <p>URL:&nbsp;<a href="https://www.infoq.com/java/" class="linkstyle">https://www.infoq.com/java/</a></p>
+      <p>URL:&nbsp;<a href="https://www.sitepoint.com/java/" class="linkstyle">https://www.sitepoint.com/java/</a></p>
+      <p>URL:&nbsp;<a href="https://jaxenter.com/" class="linkstyle">https://jaxenter.com/</a></p>
+      <p>URL:&nbsp;<a href="https://www.voxxed.com/" class="linkstyle">https://www.voxxed.com/</a></p>
+      <p>URL:&nbsp;<a href="https://techbeacon.com/java-leaders-you-should-follow-twitter" class="linkstyle">https://techbeacon.com/java-leaders-you-should-follow-twitter</a></p>
+      <p>URL:&nbsp;<a href="https://jaxlondon.com/program/" class="linkstyle">https://jaxlondon.com/program/</a></p>
+      
+      <h1> Russian Useful Resources </h1>
+      <p>URL:&nbsp;<a href="https://habrahabr.ru/hub/java/" class="linkstyle">https://habrahabr.ru/hub/java/</a></p>
+      <p>URL:&nbsp;<a href="https://www.intuit.ru" class="linkstyle">https://www.intuit.ru</a></p>
+      <p>URL:&nbsp;<a href="https://jug.ru/" class="linkstyle">https://jug.ru/</a></p>
+      <p>URL:&nbsp;<a href="https://www.ibm.com/developerworks/ru/" class="linkstyle">https://www.ibm.com/developerworks/ru/</a></p>
+      
+      <h1> Additional resources </h1>
+      <p>URL:&nbsp;<a href="https://www.w3schools.com/" class="linkstyle">https://www.w3schools.com/</a></p>
+      <p>URL:&nbsp;<a href="https://www.w3.org/" class="linkstyle">https://www.w3.org/</a></p>
+      <p>URL:&nbsp;<a href="https://www.coursera.org/" class="linkstyle">https://www.coursera.org/</a></p>
+      <p>URL:&nbsp;<a href="https://stepik.org/" class="linkstyle">https://stepik.org/</a></p>
+    </div>
+
+
+    <div id="command_line" class="tabcontent">
+      <h1> Command line Help </h1>
+      <article>
+        <ol>
+          <li>JDK download and installation:</li>
+          <li>download from Oracle site</li>
+          <li>setup: JAVA_HOME environment variable</li>
+          <li>add in PATH environment variable</li>
+          <li>create Git account.</li>
+          <li>create Fork from: <a href="https://github.com/rubfan/hillel-java-elementary">https://github.com/rubfan/hillel-java-elementary</a></li>
+          <li>create Slack account.</li>
+          <li>copy link to your fork.</li>
+          <li>enter to your command line: <b style="background-color: #bcd">&rArr; git clone your_fork_link</b></li>
+          <li>open created folder and go to the current "task_0" folder</li>
+          <li>create your own folder: firstname.lastname.rownumber.placenumber</li>
+          <li>go to this folder: <b style="background-color: #bcd">&rArr; cd firstname.lastname.rownumber.placenumber</b></li>
+          <li>create java file: <b style="background-color: #bcd">&rArr; touch YourClass.java</b></li>
+          <li>edit your file: <b style="background-color: #bcd">&rArr; vi YourClass.java</b></li>
+          <li>write necessary code and accomplish your current task.</li>
+          <li>compile your java file: <b style="background-color: #bcd">&rArr; javac src/YourClass.java -d out</b></li>
+          <li>start compiled class: <b style="background-color: #bcd">&rArr; java -cp out YourClass</b></li>
+          <li>create java docs: <b style="background-color: #bcd">&rArr; javadoc -d docs src/YourClass.java</b></li>
+          <li><b style="background-color: #bcd">&rArr; git status</b></li>
+          <li><b style="background-color: #bcd">&rArr; git add .</b></li>
+          <li><b style="background-color: #bcd">&rArr; git status</b></li>
+          <li>commit your changes: <b style="background-color: #bcd">&rArr; git commit -m "some comments about your changes"</b></li>
+          <li>push your changes to yor fork repository: <b style="background-color: #bcd">&rArr; push origin master</b></li>
+          <li>go to your git fork page and check all changes.</li>
+          <li>click the button "Pull Request" and create PR form your fork branch to master.</li>
+          
+          <li>https://help.github.com/articles/configuring-a-remote-for-a-fork/</li>
+          <li><b style="background-color: #bcd">&rArr; git remote -v</b></li>
+          <li><b style="background-color: #bcd">&rArr; git remote add upstream https://github.com/user/repo.git</b></li>
+          <li><b style="background-color: #bcd">&rArr; git remote -v</b></li>
+          <li><b style="background-color: #bcd">&rArr; git pull upstream master</b></li>
+          <li><b style="background-color: #bcd">&rArr; git push origin master</b></li>
+
+        </ol>
+        <h1>===HELP===</h1>
+        <p>enter to your command line: <b style="background-color: #bcd">&rArr; cat path_to_project/README.md</b></p>
+      </article>
+    </div>
+
+    <div id="books" class="tabcontent" style="text-align: center">
+      <h1> Books you must read </h1>
+      <p>Книга «Философия Java» Брюс Эккель</p>
+      <img src="https://ozon-st.cdn.ngenix.net/multimedia/1020709060.jpg" style="height: 600px; width: 428px; max-width: 100%;">
+      <br/>
+      <p>Книга «Java. Эффективное программирование» Джошуа Блох</p>
+      <img src="https://ozon-st.cdn.ngenix.net/multimedia/1007126934.jpg" style="height: 600px; width: 428px; max-width: 100%;">
+      <br/>
+      <p>Книга «Структуры данных и алгоритмы в Java» Роберт Лафоре</p>
+      <img src="https://ozon-st.cdn.ngenix.net/multimedia/1007528381.jpg" style="height: 600px; width: 428px; max-width: 100%;">
+      <br/>
+    </div>
+
+
+    <!-- ===============================================================LESSON 1==============================================================-->
+    <div id="lesson_1" class="tabcontent">
+      <h1>Lesson 1 - Basic terms and console program</h1>
+      <div>Part 1:</div>
+      <ol>
+        <li>Introduction</li>
+        <li>Getting to know each other</li>
+      </ol>
+      <div>Part 2:</div>
+      <ol>
+        <li>What is Java</li>
+        <li>JVM, JDK and JRE difference</li>
+        <li>JDK download and installation:<br/>
+        - download from Oracle site<br/>
+        - JAVA_HOME environment variable<br/>
+        - PATH environment variable</li><li>javac and java tools</li>
+        <li>rt.jar with basic libraries</li>
+        <li>Check the Java installation:<br/>
+        - java -version</li>
+      </ol>
+      <br/>
+      <div>Part 3:</div>
+      <ol>
+        <li>Simple program in notepad</li>
+        <li>Compile program with javac:<br/>
+        - javac FirstProgram.java<br/>
+        - javac src\FirstProgram.java -d out<br/>
+        - javac src\some\package\FirstProgram.java -d out</li>
+        <li>Run java program:<br/>
+        - java FirstProgram<br/>
+        - java -cp out FirstProgram<br/>
+        - java -cp out some.package.FirstProgram
+        </li>
+      </ol>
+      <h1>Lesson 1 - Homework</h1>
+    </div>
+
+    <!-- ===============================================================LESSON 2==============================================================-->
+    <div id="lesson_2" class="tabcontent">
+      <h1>Lesson 2 - Primitive variables and Git basics</h1>
+
+      <div>Part 1:</div>
+      <ol>
+        <li>Download and installation of IntelliJ Idea</li>
+        <li>Explain different types of IDE (NetBeans, Eclipse, IntelliJ Idea):<br/>
+        - show graph of each IDE usage<br/>
+        - benefits of IntelliJ Idea<br/>
+        - auto save feature of IntelliJ Idea</li>
+        <li>Basic program in IntelliJ Idea (create a package and a class)</li>
+        <li>Program configuration:<br/>
+        - program structure option<br/>
+        - key promoter plugin<br/>
+        - external libraries (show rt.jar as example)<br/>
+        - show where System.out.println function is located</li>
+        <li>Show current run configuration</li>
+      </ol>
+      <div>Part 2:</div>
+      <ol>
+        <li>Program structure:<br/>
+        - comments:<br/> 
+            &emsp;1) Single Line Comment,<br/>
+            &emsp;2) Multi Line Comment,<br/>
+            &emsp;3) Documentation Comment (@param, @return, @throws, @since, @autor, @version)<br/>
+        - statements:<br/>
+            &emsp;1) Expression statements,<br/> 
+            &emsp;2) Declaration statements,<br/> 
+            &emsp;3) Control flow statements:<br/> 
+            &emsp;&emsp;a) decision-making statements (if-then, if-then-else, switch),<br/> 
+            &emsp;&emsp;b) the looping statements (for, while, do-while),<br/>
+            &emsp;&emsp;c) the branching statements (break, continue, return)</li>
+        <li>Primitive data types:<br/>
+        - show byte type overflow exception<br/>
+        - binary number system<br/>
+        - primitive data types assignment (example, that it should be initialized)<br/>
+        - 4 kinds of variables (instance variables, class variables, local variables, parameters)<br/>
+        - local variables reassignment<br/>
+        - local variables are on the stack (stored by value)<br/>
+        - primitive data types (byte, short, int, long, float, double, boolean, char)<br/>
+        - pointer data type (depends on native language and JVM 32 bits or 64 bits)<br/>
+        - String data type (immutability)</li><li>Arithmetic Operators:<br/>
+        - basic (*, /, %, +, -)<br/>
+        - prefix/postfix (++, --)<br/>
+        - compound (+=)</li>
+        <li>Math class</li>
+      </ol>
+      <div>Part 3:</div>
+      <ol>
+        <li>Git download</li>
+        <li>Git overview</li>
+        <li>GitHub repository (made your own repo)</li>
+        <li>Ignoring unnecessary files</li>
+        <li>Repository initialization</li>
+        <li>Adding new files to your repository</li>
+        <li>Committing changes</li>
+        <li>Adding a remote repository</li>
+        <li>Updating changes at your remote repository</li>
+        <li>Getting data from your remote repository</li>
+      </ol>
+      <br/>
+
+      <h1>Lesson 2 - Homework</h1>
+      <ol>
+        <li>Найти минимальное из 3х чисел</li>
+        <li>Найти среди 3х чисел максимальное и минимальное</li>
+        <li>Найти минимальное из 3х чисел, причем, если минимальных несколько вывести все такие числа</li>
+        <li>Написать программу, которая проверит, является ли число четным или нечетным</li>
+        <li>Даны 2 числа, определить делится ли первое число на второе без остатка</li>
+        <li>Найти ближайшее к 10 из 2х заданных чисел. Например, среди чисел 8 и 11 ближайшее к десяти 11</li>
+        <li>Посчитайте, сколько будет стоить аренда квартиры за заданное число дней, если известно, что за 1 день ее стоимость 40 грн. Причем, если съемщик прожил в ней больше 5 дней, он получит скидку 20 грн, а если больше 7 дней, то скидка составит 50 грн.</li>
+      </ol>
+    </div>
+
+    <!-- ===============================================================LESSON 3==============================================================-->
+    <div id="lesson_3" class="tabcontent">
+      <h1>Lesson 3 - Conditionals</h1>
+
+      <div>Start:</div>
+      <div>Test. Command line tools and basic Java terms</div>
+      <ol>
+        <li>В чем разница между JVM, JDK, JRE?</li>
+        <li>Для чего используется программа javac, для чего java?</li>
+        <li>Файл с программой на java находится в “d:\projects\src\Program.java” В папке “d:\projects” также находится папка “classes” Напишите, как бы вы скомпилировали программу и результат компиляции (байт-код) поместили в папку “d:\projects\classes”:</li>
+        <li>Структура папок как в 3м задании, вы успешно скомпилировали файл и был создан Program.class в папке “d:\projects\classes” Вы находитесь в папке “d:\projects”. Напишите команду запуска вашего приложения в командной строке:</li>
+        <li>В каких 3х состояниях может находиться файл в репозитории (базе данных) Git? Опишите каждое из них.         Для чего нужны команды “git commit” и “git push”?</li>
+      </ol>
+
+      <div>Part 1:</div>
+      
+      <ol>
+        <li>Program which passes parameters from the command line</li>
+        <li>Write a program which gets parameters from the command line and prints their sum</li>
+        <li>Show how to pass parameters via IDE</li>
+        <li>Scanner example:<br/>
+        <i>Scanner scanner = new Scanner(System.in);<br/>
+        int a = scanner.nextInt();<br/>
+        String str = scanner.nextLine();</i></li>
+      </ol>
+      
+      <div>Part 2:</div>
+      
+      <ol>
+        <li>JIT (just-in-time compilation)</li>
+      </ol>
+      
+      <div>Part 3:</div>
+      
+      <ol>
+        <li>Simple ifs (2 numbers) and flow chart:<br/>
+        - block if statement<br/>
+        - three numbers if statement<br/>
+        - nested if<br/>
+        <i>   if (rooms &gt; 0)<br/>
+              if (people &gt; 0)<br/>
+                 sout(people / rooms);<br/>
+           else<br/>
+              sout(&quot;nothing&quot;);<br/></i>
+        - minimum of 3 numbers problem (with difference)<br/>
+        - conditional assignment<br/>
+        - logical operators<br/>
+        - low circuit condition</li>
+        <li>Room rental problem:<br/>
+        - show usage of constants</li>
+        <li>Variables scope:<br/>
+        - in &quot;if&quot; block<br/>
+        - in method<br/>
+        - in class</li>
+        <li>Find the absolute number using condition:<br/>
+        - within main method<br/>
+        - using separate methods<br/>
+        - using Math functions</li>
+        <li>Switch statement:<br/>
+        - number condition example<br/>
+        - accepts String data type from Java 6</li>
+        <li>Calculator problem (using command line)</li>
+      </ol>
+
+      <div>Part 4:</div>
+      
+      <ol>
+        <li>While loop:<br/>
+        - block schema (reason of usage)<br/>
+        - print message in a loop<br/>
+        - sum of digits in a number problem</li>
+        <li>Do-While loop</li>
+        <li>Factorial example</li>
+        <li>Break and continue</li>
+      </ol>
+      <br/>
+
+      <h1>Lesson 3 - Homework</h1>
+      <ol>
+        <li>Создайте калькулятор, который выполняет, базовые арифметические операции:<br/>
+        - умножение;<br/>
+        - деление;<br/>
+        - сложение;<br/>
+        - вычитание;<br/>
+        - остаток от деления (%);<br/>
+        - нахождение модуля числа (можно использовать Math.abs)<br/>
+        входные данные здесь можно представить как:<br/>
+        <i>String operation = &quot;addition&quot;;<br/>
+        int firstOperand = 15;<br/>int secondOperand = 12;</i> </li>
+        <li>Добавить к калькулятору возможность ввода операции и чисел из консоли. В начале выводите сообщение &quot;Введите операцию:&quot;, дальше пользователь вводит операцию, далее &quot;Введите первое число:&quot; - вводит, &quot;Введите второе число: &quot; - пользователь вводит.</li>
+        <li>Тот же калькулятор, только операция и числа вводятся как параметры из командной строки в &quot;Edit Configuration&quot;. (попробуйте после того как запустили в IDE запустить приложение из консоли с передачей параметров).</li>
+        <li>Задача &quot;Чаевые&quot;.</li>
+      </ol>
+      <div style="margin-left:40px;">входные данные: сумма, которую вы должны заплатить и уровень сервиса</div>
+      <div style="margin-left:40px;">в зависимости от уровня сервиса посчитайте количество денег, которое вы должны оставить:</div>
+      <div style="margin-left:40px;">- terrible (0%)</div>
+      <div style="margin-left:40px;">- poor (5%)</div>
+      <div style="margin-left:40px;">- good (10%)</div>
+      <div style="margin-left:40px;">- great (15%)</div>
+      <div style="margin-left:40px;">- excellent (20%)</div>
+      <br/>
+    </div>
+
+    <!-- ===============================================================LESSON 4==============================================================-->
+    <div id="lesson_4" class="tabcontent">
+      <h1>Lesson 4 - Loops and Arrays</h1>
+
+      <div>Part 1:</div>
+      <ol>
+        <li>Test revision: common mistakes</li>
+      </ol>
+
+      <div>Part 2:</div>
+      <ol>
+        <li>Switch block:<br/>
+        - simple example<br/>
+        - meaning of the &quot;break&quot; word<br/>
+        - String type only from java 7</li>
+        <li>Calculator using &quot;switch&quot; block (students)</li>
+      </ol>
+
+      <div>Part 3:</div>
+      <ol>
+        <li>While loop:<br/>
+        - flow chart example<br/>
+        - with i++<br/>
+        - with ++i</li>
+        <li>Do...while loop</li>
+        <li>Print all digits in a number (students)</li>
+      </ol>
+
+      <div>Part 4:</div>
+
+      <ol>
+        <li>IntStream class:<br/>
+        - range<br/>
+        - rangeClosed<br/>
+        - forEach method</li>
+        <li>Stream.of(1, 5, 8)</li>
+        <li>Filter method</li>
+        <li>Boolean results:<br/>
+        - anyMatch<br/>
+        - allMatch<br/>
+        - noneMatch</li>
+        <li>Reduce operation</li>
+        <li>IntStream.iterate(0, i -&gt; i + 1).limit(5)</li>
+        <li>Investigate class: <a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/IntStream.html">https://docs.oracle.com/javase/8/docs/api/java/util/stream/IntStream.html</a></li>
+      </ol>
+      
+      <div>Part 5:</div>
+      <ol>
+        <li>One-dimensional arrays:<br/>
+        - purpose<br/>
+        - 2 types of initialization</li>
+        <li>Put all digits from a privious task into an array instead of console (students)</li>
+        <li>&quot;for&quot; loop (simplified while)</li>
+      </ol>
+      <ol>
+        <li>Array output:<br/>
+        - String.join<br/>
+        - StringJoiner</li>
+      </ol>
+
+      <h1>Lesson 4 - Homework</h1>
+      <ol>
+        <li> Создайте программу, выводящую на экран все четырёхзначные числа последовательности 1000 1003 1006 1009 1012 1015 ….<br/></li>
+        <li> Создайте программу, выводящую на экран первые 55 элементов последовательности 1 3 5 7 9 11 13 15 17 ….</li>
+        <li>Создайте программу, выводящую на экран все неотрицательные элементы последовательности 90 85 80 75 70 65 60 ….</li>
+        <li>Создайте программу, выводящую на экран первые 20 элементов последовательности 2 4 8 16 32 64 128 ….</li>
+        <li>Найти сумму первых n элементов массива</li>
+        <li>Найти минимальный и максимальный элемент массива</li>
+        <li>Найти сумму всех четных и сумму всех нечетных элементов массива</li>
+        <li>Найти все счастливые билеты от 100000 до 999999:<br/>
+        билет счастливый если сумма первых трех цифр равна сумме трех последних<br/>
+        например,123312: 1+2+3==3+1+2</li>
+        <li>Перевести число в двоичную систему счисления</li>
+        <li>Вывести первые 5 минимальных элементов массива</li>
+        <li>
+          <span style="color: rgb(102, 102, 102); font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; float: none; display: inline !important; background-color: rgb(255, 255, 255);">Write  a program to repeatedly add all the digits until the result has only one digit of a given non-negative number:<br/></span>
+
+          <span style="color: rgb(102, 102, 102); font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; float: none; display: inline !important; background-color: rgb(255, 255, 255);">The digital root of 555555 = 5 + 5 + 5 + 5 + 5 + 5 = 30 = 3 + 0 = 3</span>
+        </li>
+      </ol>
+    </div>
+
+    <!-- ===============================================================LESSON 5==============================================================-->
+    <div id="lesson_5" class="tabcontent">
+      <h1>Lesson 5 - Jar creation and functions</h1>
+      <div>Part 1:</div>
+      <ol>
+        <li>Two-dimensional arrays</li>
+        <li>Put consecutive numbers into an array task (students)</li>
+      </ol>
+      <div>Part 2:</div>
+      <ol>
+        <li>What is function:<br>
+        - void return type<br>
+        - other return types</li>
+        <li>Stack of calls</li>
+        <li>Function overloading</li>
+      </ol>
+      <div>Part 3:</div>
+      <ol>
+        <li>Create Utils.java class:<br>
+        - add method which reads data from console (getArrayFromConsole)<br>
+        - add method which prints data onto console</li>
+        <li>Create jar file from Utils.class file:<br>
+        jar cf utils.jar ua\org\hillel\courses\Utils.class</li>
+        <li>Add MessagePrinter to show how to run main method from a class in a jar<br>
+        java -jar utils.jar</li><li>Add utils.jar into another project and show its functionality</li>
+      </ol>
+
+      <h1>Lesson 5 - Homework</h1>
+      <ol>
+        <li>Создайте функцию, которая заполняет 2-мерный массив треугольником Паскаля (элемент, который на строчке ниже, равен сумме 2х верхних элементов, которые стоят рядом; по бокам стоят единицы), изображение на картинке:<br/>
+        <a href="https://www.google.com.ua/search?q=%D1%82%D1%80%D0%B5%D1%83%D0%B3%D0%BE%D0%BB%D1%8C%D0%BD%D0%B8%D0%BA+%D0%BF%D0%B0%D1%81%D0%BA%D0%B0%D0%BB%D1%8F&amp;espv=2&amp;biw=1920&amp;bih=955&amp;tbm=isch&amp;imgil=Y4oV4naxbDpt4M%253A%253BC6BRMCm4oCjSAM%253Bhttp%25253A%25252F%25252Fwww-formula.ru%25252Findex.php%25252Fpascal-triangle&amp;source=iu&amp;pf=m&amp;fir=Y4oV4naxbDpt4M%253A%252CC6BRMCm4oCjSAM%252C_&amp;usg=__OcfzQVWxXHWo9IRZGItbhPWL2h4%3D&amp;ved=0ahUKEwj1vvuw_9bOAhWI4SYKHaNSBvkQyjcIJQ&amp;ei=mvi7V_WJDIjDmwGjpZnIDw#imgrc=Y4oV4naxbDpt4M%3A" rev="en_rl_minimal">https://www.google.com.ua/search?q=%D1%82%D1%80%D0%B5%D1%83%D0%B3%D0%BE%D0%BB%D1%8C%D0%BD%D0%B8%D0%BA+%D0%BF%D0%B0%D1%81%D0%BA%D0%B0%D0%BB%D1%8F&amp;espv=2&amp;biw=1920&amp;bih=955&amp;tbm=isch&amp;imgil=Y4oV4naxbDpt4M%253A%253BC6BRMCm4oCjSAM%253Bhttp%25253A%25252F%25252Fwww-formula.ru%25252Findex.php%25252Fpascal-triangle&amp;source=iu&amp;pf=m&amp;fir=Y4oV4naxbDpt4M%253A%252CC6BRMCm4oCjSAM%252C_&amp;usg=__OcfzQVWxXHWo9IRZGItbhPWL2h4%3D&amp;ved=0ahUKEwj1vvuw_9bOAhWI4SYKHaNSBvkQyjcIJQ&amp;ei=mvi7V_WJDIjDmwGjpZnIDw#imgrc=Y4oV4naxbDpt4M%3A<br/></a></li>
+        <li>Заполните 2-мерный массив по спирали:<br/>  1   2  3 4<br/> 12 13 14 5<br/> 11  16 15 6<br/> 10 9  8  7<br/><br/></li>
+        <li>Написать программу, которая получает 2 числа из командной строки как параметры, и выводит результат суммы этих чисел. Программу   нужно запаковать в jar и запустить из командной строки.</li>
+      </ol>
+      <div><i> jar cf program.jar &lt;main_class_file&gt;</i> - создание jar файла</div>
+      <div><i>java -jar &lt;имя_файла&gt; &lt;параметры&gt;</i> - запуск программы</div>
+      <br/>
+    </div>
+
+    <!-- -->
+    <div id="lesson_6" class="tabcontent">
+      <h1>Lesson 6 - Maven introduction</h1>
+
+      <div>Part 1:</div>
+      <ol>
+        <li>GitHub - Gist</li>
+        <li>Pastebin</li>
+        <li>Shift operation (division by 2 example):<br>- check time in nanoseconds<br>- show bytecode has shift instead of / 2</li>
+        <li>Power to the number of 2 task (students)</li>
+        <li>String comparison with equals</li>
+      </ol>
+      <div>Part 2:</div>
+      <ol>
+        <li>Maven basics:<br>- versioning<br>- creates a separate item<br>- automatically downloads transitive dependencies<br>- you can work with a local repository as well as with a remote one</li>
+        <li>Maven vs Ant comparison</li>
+        <li>Maven standalone installation:<br>- download maven<br>- environment variables<br>- test by "mvn -version"</li>
+        <li>Base project:<br>- "groupId" (company name)<br>- "artifactId" (project name)<br>- "version" (project version)<br>- "modelVersion" (schema structure)<br>- "packaging"</li>
+        <li>Maven goals:<br>- mvn clean<br>- mvn compile<br>- mvn package<br>- mvn install</li>
+        <li>"Utils" library using maven project</li><li>Custom jar name:<br>&lt;build&gt;<br>&nbsp; &lt;finalName&gt;utils&lt;/finalName&gt;<br>&lt;/build&gt;</li>
+      </ol>
+
+      <h1>Lesson 6 - Homework</h1>
+
+        <div><a name="596"><span><ol><li> Сделайте сортировку выборкой, когда нужно найти минимальный элемент и посчитайте сколько на нее отводится операций(времени)
+        <br></li></ol><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;попробуйте увеличить количество элементов в массиве и оценить на сколько увеличится время
+        </div><div><br></div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.  Есть 2 массива упорядоченных по возрастанию. Получите 3й массив, который объединит все эти элементы, но также в возрастающем &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;порядке.
+        </div><div><br></div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Пример ввода:
+        </div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a = {1, 3, 5}
+        </div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b = {2, 4, 8, 9, 12}
+        </div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Результат:
+        </div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c = {1, 2, 3, 4, 5, 8, 9, 12}</div><div><br></div><ol start="3">
+        <li> Определите сложность следующего алгоритма:
+        <br></li></ol></span></a>
+        <div>
+        <pre>
+        public class Algorithm {
+            public static void main(String[] args) {
+                int k = 0;
+                int n = 10;
+                for (int i = 0; i < n; i++) {
+                    for (int j = i + 1; j < n; j++) {
+                        for (int z = j + 1; z < n; z++) {
+                            k++;
+                        }
+                    }
+                }
+                System.out.println("The result is " + k);
+            }
+        }
+        </pre>
+        </div>
+        <div><br></div>
+
+        <ol start="4">
+
+        <li>Есть массив с числами упорядоченными по возрастанию, нужно определить есть ли в этом массиве 2 числа, сумма которых равна "sum".
+        </li></ol><div><br></div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Пример ввода:
+        </div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a = {1, 5, 7, 9, 12}
+        </div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sum = 12
+        </div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Результат:
+        </div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true - так как 5 + 7 = 12
+        </div><div><br></div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a = {1, 5, 7, 9, 12}
+        </div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sum = 3
+        </div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Результат:
+        </div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;false - так как нет двух чисел, которые в сумме дают 3</div>
+        </div>
+    </div>
+
+    <div id="lesson_7" class="tabcontent">
+      <h1>Lesson 7 - Testing basics and classes</h1>
+      <div>
+        <div><a name="370">
+        <span></span></a><div><a name="370"><div>Part 1:</div></a><ol><a name="370"><li>Create calculator class</li><li>Add tests for each method</li><li>Show TDD principle</li><li>Factorial task (10 -&gt; 2) with tests (students)</li></a><li><a name="370">String calculator kata:&nbsp;</a><a href="http://osherove.com/tdd-kata-1/" rev="en_rl_minimal">http://osherove.com/tdd-kata-1/</a></li><li>Low circuit operations</li><li>Break and continue</li><li>Shift operation</li><li>Lambdas</li></ol><div><br></div><div>Part 2:</div><ol><li>What is OOP (examples objects from real life)</li><li>Lamp example:<br>
+        - behavior (functions): switchOn, switchOff<br>
+        - condition (variables): type (fluorescent, led, incandescent), power, color, shines</li><li>Object creation<br>
+        - what is reference (houses and their addresses)<br>
+        - object in the Heap<br>
+        - default values</li><li>Constructor - define initial state</li><li>Reassigning reference (lamp2 = lamp1)</li></ol><div><br></div><div>Part 3:</div><ol><li>Complex numbers</li><li>Create own datatype</li></ol><div><br></div><div>Part 4:</div><ol><li>Download junit.jar and hamcrest.jar</li><li>org.junit.Assert, org.junit.Test, org.hamcrest.core.Is.is</li><li>org.junit.runner.JUnitCore</li></ol><div><br></div></div><div><br></div>
+        </div>
+      </div>
+
+      <h1>Lesson 7 - Homework</h1>
+      <div>
+      <div><span><ol><li> Создайте класс и определите методы для предмета "Фонарь". У него будет название, определенное количество батареек, которые можно вставить, он должен уметь светить красным, белым светом, а также мигать, причем для белого света достаточно одной батарейки, для красного нужно 2, для мигающего нужно 3 (свойство int battery, которое будет хранить количество батареек для этого подойдет). Вы можете добавить возможности фонаря, как сочтете нужным.
+      <br></li></ol><div><br></div><ol start="2"><li> Придумайте еще 2 каких-нибудь объекта из реальной жизни и реализуйте это с помощью класса.<br></li></ol></span>
+      </div>
+    </div>
+
+    <div id="lesson_8" class="tabcontent">
+      <h1>Lesson 8 - Hamcrest library and sorting algorithms</h1>
+      <h1>Lesson 8 - Homework</h1>
+    </div>
+
+    <div id="lesson_9" class="tabcontent">
+      <h1>Lesson 9 - Complexity of algorithms and arrays sorting</h1>
+      <h1>Lesson 9 - Homework</h1>
+    </div>
+
+    <div id="lesson_10" class="tabcontent">
+      <h1>Lesson 10 - Recursion</h1>
+      <h1>Lesson 10 - Homework</h1>
+    </div>
+
+    <script>
+      function openLesson(event, lessonName) {
+          var i, tabcontent, tablinks;
+          tabcontent = document.getElementsByClassName("tabcontent");
+          for (i = 0; i < tabcontent.length; i++) {
+              tabcontent[i].style.display = "none";
+          }
+          tablinks = document.getElementsByClassName("tablinks");
+          for (i = 0; i < tablinks.length; i++) {
+              tablinks[i].className = tablinks[i].className.replace(" active", "");
+          }
+          document.getElementById(lessonName).style.display = "block";
+          event.currentTarget.className += " active";
+      }
+      document.getElementsByClassName("next")[0].click();
+    </script>
+  </div>
+</html>
